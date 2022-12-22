@@ -9,8 +9,8 @@ terraform {
 
 provider "aws" {
    region = "eu-north-1"
-   access_key = "AKIA23DWV2JOQZ7B47EZ"
-   secret_key = "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"
+   access_key = ""
+   secret_key = ""
 }
 
 resource "aws_vpc" "terraform-ubuntu-vpc" {
@@ -137,10 +137,9 @@ resource "aws_instance" "terraform-ubuntu" {
   associate_public_ip_address = true
   vpc_security_group_ids = ["${aws_security_group.terraform-ubuntu-sg.id}"]
   subnet_id = "${aws_subnet.terraform-ubuntu-subnet-1.id}"
-  #user_data = "${file("copy_shell_file_to_homedir.sh")}"
 
   provisioner "file" {
-    source      = "~/Terraform/Project-1/install_openshift_original_ubuntu.sh"
+    source      = "~/IdeaProjects/terraform-hands-on/project-1/install_openshift_original_ubuntu.sh"
     destination = "/home/ubuntu/install_openshift_original_ubuntu.sh"
 
     connection {
