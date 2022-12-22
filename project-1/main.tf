@@ -9,8 +9,8 @@ terraform {
 
 provider "aws" {
    region = "eu-north-1"
-   access_key = ""
-   secret_key = ""
+   shared_credentials_files = ["~/.aws/credentials"]
+   profile = "default"
 }
 
 resource "aws_vpc" "terraform-ubuntu-vpc" {
