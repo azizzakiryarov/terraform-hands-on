@@ -34,17 +34,17 @@ sudo mv oc kubectl /usr/local/bin/
 
 # 3. Login as root
 
-sudo su -
+#sudo su -
 
-cat << EOF > /etc/docker/daemon.json
-{
-    "insecure-registries" : [ "172.30.0.0/16" ]
-}
-EOF
+#cat << EOF > /etc/docker/daemon.json
+##{
+#    "insecure-registries" : [ "172.30.0.0/16" ]
+#}
+#EOF
 
-exit
+#exit
 
-sudo systemctl restart docker
+#sudo systemctl restart docker
 
 #sudo mkdir /etc/containers
 
@@ -56,6 +56,8 @@ sudo systemctl restart docker
 #                registries = ["registry.access.redhat.com", "registry.redhat.io", "docker.io", "quay.io"]
 #                EOF)" > /etc/containers/registries.conf'
 
-#sudo hostnamectl set-hostname ec2-13-49-158-186.eu-north-1.compute.amazonaws.com
+#sudo hostnamectl set-hostname ec2-16-171-66-253.eu-north-1.compute.amazonaws.com
 
-#sudo oc cluster up --public-hostname=ec2-13-49-158-186.eu-north-1.compute.amazonaws.com
+#sudo oc cluster up --public-hostname=ec2-16-171-66-253.eu-north-1.compute.amazonaws.com
+
+#sudo oc cluster up --routing-suffix=compute.amazonaws.com --public-hostname=ec2-16-171-66-253.eu-north-1.compute.amazonaws.com
