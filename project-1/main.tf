@@ -103,6 +103,18 @@ resource "aws_instance" "terraform-ubuntu" {
     }
   }
 
+  provisioner "file" {
+    source      = "~/IdeaProjects/terraform-hands-on/project-1/install_minikube_ubuntu.sh"
+    destination = "/home/ubuntu/install_minikube_ubuntu.sh"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/aws-course/DO180.pem")
+      host        = self.public_dns
+    }
+  }
+
   tags = {
     Name = "terraform-ubuntu"
   }
