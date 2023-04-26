@@ -8,7 +8,4 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt update -y
 apt-cache policy docker-ce
 sudo apt install docker-ce -y
-sudo usermod -aG docker ${USER} 
-newgrp docker
-exit
-sh install_minikube_ubuntu.sh
+sudo usermod -aG docker $USER && newgrp docker
