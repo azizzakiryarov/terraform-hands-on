@@ -84,7 +84,7 @@ resource "aws_security_group" "terraform-ubuntu-sg" {
 }
 
 resource "aws_instance" "terraform-ubuntu" {
-  ami                         = "ami-01763927c1f3a3794"
+  ami                         = "ami-064087b8d355e9051"
   instance_type               = "t3.medium"
   key_name                    = "DO180"
   associate_public_ip_address = true
@@ -94,6 +94,18 @@ resource "aws_instance" "terraform-ubuntu" {
   provisioner "file" {
     source      = "~/IdeaProjects/terraform-hands-on/project-1/install_openshift_original_ubuntu.sh"
     destination = "/home/ubuntu/install_openshift_original_ubuntu.sh"
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/aws-course/DO180.pem")
+      host        = self.public_dns
+    }
+  }
+
+  provisioner "file" {
+    source      = "~/IdeaProjects/terraform-hands-on/project-1/install_docker_ubuntu.sh"
+    destination = "/home/ubuntu/install_docker_ubuntu.sh"
 
     connection {
       type        = "ssh"
